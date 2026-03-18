@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detector - Check Website Safety</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>PhishDetect</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn btn-small" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header" id="home">
+            <div class="header-content">
+                <h1>🔒 <span class="gradient-text">Phishing URL Detector</span></h1>
+                <p class="subtitle">Protect yourself from malicious websites with our advanced detection system</p>
+            </div>
+        </header>
+
+        <!-- Main Detection Section -->
+        <section class="detection-section">
+            <div class="card main-card">
+                <div class="card-header">
+                    <i class="fas fa-search"></i>
+                    <h2>Check URL Safety</h2>
+                </div>
+                
+                <div class="input-group">
+                    <input 
+                        type="url" 
+                        id="urlInput" 
+                        placeholder="Enter URL to check (e.g., https://example.com)"
+                        value="https://"
+                    >
+                    <button id="checkBtn" class="btn btn-primary">
+                        <span class="btn-text">Check URL</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="quick-examples">
+                    <span>Try examples:</span>
+                    <button class="example-btn" data-url="https://www.google.com">Google</button>
+                    <button class="example-btn" data-url="https://www.facebook.com">Facebook</button>
+                    <button class="example-btn" data-url="http://192.168.1.1/login">Suspicious IP</button>
+                    <button class="example-btn" data-url="https://paypal-secure-login.com">Phishing Test</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Animation -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Analyzing URL...</p>
+        </div>
+
+        <!-- Result Section -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <div class="card result-card" id="resultCard">
+                <!-- Result will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <h2 class="section-title">Advanced Detection Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Advanced ML algorithms analyze URL patterns and detect phishing attempts with high accuracy</p>
+                    <div class="feature-stats">
+                        <span class="stat">95% Accuracy</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <h3>SSL Validation</h3>
+                    <p>Check for valid SSL certificates and HTTPS encryption</p>
+                    <div class="feature-stats">
+                        <span class="stat">Real-time Check</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>URL Analysis</h3>
+                    <p>Comprehensive analysis of URL structure, length, and patterns</p>
+                    <div class="feature-stats">
+                        <span class="stat">20+ Parameters</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Real-time Detection</h3>
+                    <p>Instant results with detailed feature breakdown and confidence scores</p>
+                    <div class="feature-stats">
+                        <span class="stat">&lt; 1 second</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works" id="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Enter URL</h3>
+                        <p>Paste any website URL you want to check into the input field</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Analysis</h3>
+                        <p>Our system analyzes 20+ different features of the URL including length, special characters, patterns</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Get Results</h3>
+                        <p>Receive instant results with confidence score and detailed feature analysis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- URL Statistics -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalChecked">0</span>
+                        <span class="stat-label">URLs Checked</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="phishingDetected">0</span>
+                        <span class="stat-label">Phishing Detected</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="safeUrls">0</span>
+                        <span class="stat-label">Safe URLs</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-percent"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="accuracyRate">95%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Checks -->
+        <section class="recent-checks">
+            <h2 class="section-title">Recent URL Checks</h2>
+            <div class="recent-list" id="recentList">
+                <!-- Recent checks will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Safety Tips Section -->
+        <section class="tips-section" id="about">
+            <h2 class="section-title">Phishing Safety Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Check HTTPS</h3>
+                    <p>Always ensure the website uses HTTPS and has a valid SSL certificate</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Verify Domain</h3>
+                    <p>Check for misspellings or unusual domain names (e.g., gooogle.com instead of google.com)</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Links</h3>
+                    <p>Hover over links in emails before clicking to see the actual URL</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-exclamation"></i>
+                    <h3>Urgency</h3>
+                    <p>Be wary of messages creating urgency or asking for personal information</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How accurate is this detector?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our detector uses advanced algorithms to analyze 20+ URL features with approximately 95% accuracy in detecting phishing attempts.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes a URL suspicious?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Suspicious URLs often have unusual length, IP addresses instead of domain names, multiple subdomains, special characters like @, or misspelled brand names.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is this tool completely free?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! This tool is completely free to use for personal and educational purposes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-card">
+                <h3>Stay Protected</h3>
+                <p>Get the latest phishing trends and safety tips</p>
+                <form id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>PhishDetect</h4>
+                <p>Protecting users from phishing attacks through advanced URL analysis</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PhishDetect. All rights reserved. | Made with <i>GB</i> for security</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
